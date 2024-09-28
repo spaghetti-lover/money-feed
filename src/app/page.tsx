@@ -1,101 +1,179 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  function myMenuFunction() {
+    var i = document.getElementById('navMenu');
+    if (i.className === 'nav-menu') {
+      i.className += ' responsive';
+    } else {
+      i.className = 'nav-menu';
+    }
+  }
+  var a = document.getElementById('loginBtn');
+  var b = document.getElementById('registerBtn');
+  var x = document.getElementById('login');
+  var y = document.getElementById('register');
+  function login() {
+    x.style.left = '4px';
+    y.style.right = '-520px';
+    a.className += ' white-btn';
+    b.className = 'btn';
+    x.style.opacity = 1;
+    y.style.opacity = 0;
+  }
+  function register() {
+    x.style.left = '-510px';
+    y.style.right = '5px';
+    a.className = 'btn';
+    b.className += ' white-btn';
+    x.style.opacity = 0;
+    y.style.opacity = 1;
+  }
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <div className="wrapper">
+        <nav className="nav">
+          <div className="nav-logo">
+            <p>LOGO .</p>
+          </div>
+          <div className="nav-menu" id="navMenu">
+            <ul>
+              <li>
+                <a href="#" className="link active">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" className="link">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="#" className="link">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="link">
+                  About
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="nav-button">
+            <button
+              className="btn white-btn"
+              id="loginBtn"
+              onClick={() => login()}
+            >
+              Sign In
+            </button>
+            <button className="btn" id="registerBtn" onClick={() => register()}>
+              Sign Up
+            </button>
+          </div>
+          <div className="nav-menu-btn">
+            <i className="bx bx-menu" onClick={() => myMenuFunction()}></i>
+          </div>
+        </nav>
+        <div className="form-box">
+          <div className="login-container" id="login">
+            <div className="top">
+              <span>
+                Don't have an account?{' '}
+                <a href="#" onClick={() => register()}>
+                  Sign Up
+                </a>
+              </span>
+              <header>Login</header>
+            </div>
+            <div className="input-box">
+              <input
+                type="text"
+                className="input-field"
+                placeholder="Username or Email"
+              />
+              <i className="bx bx-user"></i>
+            </div>
+            <div className="input-box">
+              <input
+                type="password"
+                className="input-field"
+                placeholder="Password"
+              />
+              <i className="bx bx-lock-alt"></i>
+            </div>
+            <div className="input-box">
+              <input type="submit" className="submit" value="Sign In" />
+            </div>
+            <div className="two-col">
+              <div className="one">
+                <input type="checkbox" id="login-check" />
+                <label htmlFor="login-check"> Remember Me</label>
+              </div>
+              <div className="two">
+                <label>
+                  <a href="#">Forgot password?</a>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="register-container" id="register">
+            <div className="top">
+              <span>
+                Have an account?{' '}
+                <a href="#" onClick={() => login()}>
+                  Login
+                </a>
+              </span>
+              <header>Sign Up</header>
+            </div>
+            <div className="two-forms">
+              <div className="input-box">
+                <input
+                  type="text"
+                  className="input-field"
+                  placeholder="Firstname"
+                />
+                <i className="bx bx-user"></i>
+              </div>
+              <div className="input-box">
+                <input
+                  type="text"
+                  className="input-field"
+                  placeholder="Lastname"
+                />
+                <i className="bx bx-user"></i>
+              </div>
+            </div>
+            <div className="input-box">
+              <input type="text" className="input-field" placeholder="Email" />
+              <i className="bx bx-envelope"></i>
+            </div>
+            <div className="input-box">
+              <input
+                type="password"
+                className="input-field"
+                placeholder="Password"
+              />
+              <i className="bx bx-lock-alt"></i>
+            </div>
+            <div className="input-box">
+              <input type="submit" className="submit" value="Register" />
+            </div>
+            <div className="two-col">
+              <div className="one">
+                <input type="checkbox" id="register-check" />
+                <label htmlFor="register-check"> Remember Me</label>
+              </div>
+              <div className="two">
+                <label>
+                  <a href="#">Terms & conditions</a>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
